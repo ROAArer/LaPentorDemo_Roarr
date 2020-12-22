@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    <meta charset="utf-8">
+    <title>Save data in loacl storage</title>
+    <!-- Css -->
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/css/bootstrap-combined.min.css" rel="stylesheet">    
+    <link rel="stylesheet" href="style.css">
+    
+
+  </head>
+  
+  <body>
+  <div class="container"><div class="row"><div class="span12">
+  <!-- ========================  Html ============================= -->
+  <div class="main">
+    <div class="header">
+      <h3>Save your data in local storage </h3>
+      <h5>Try to refressh or open in other tab</h5>
+      <hr><br>
+    </div>
+  	<h2>HTML</h2>
+		<ul class="button-bar">
+  		<li><a href="#" class="video-click" ><span class="icon gray medium" data-icon="2"></span> Video</a></li>
+  		<li><a href="#"  class="audio-click" ><span class="icon gray medium" data-icon="3"></span> Audio</a></li>
+  		<li><a href="#" class="photo-click" ><span class="icon gray medium" data-icon="0"></span> Photo</a</li>
+      <li><a href="#" class="reload-click"><span class="icon gray medium" data-icon=";"></span> Refresh</a></li>  
+		</ul>    
+    <!-- Display data from local store -->
+    <div id="data"></div>
+    
+    <div class="well">
+      <form  class="form "name="" id="form" method="get">
+          <label for="name" class="label label-important">Title of story</label>
+          <input type="text" name="name" value="" id="name" class="input-xlarge" placeholder="Your title..">
+          <label for="story" class="label label-important">Story</label>
+          <textarea name="description" cols="50" rows="10" id="story" class="input-xlarge"placeholder="you Story.."></textarea>
+          <input class="btn" type="button" value="Save Data" id="sendAll"><br><br>
+          <input class="btn btn-danger" type="reset" value="Reset form">
+      </form>
+    </div>  
+    
+  </div>
+  <!-- ========================  Html ============================= -->
+  </div></div></div>  
+
+    <!-- Call JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.0/jquery.min.js"></script>
+    <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.0/js/bootstrap.min.js"></script>
+    <script src="autosave.js"></script>
+    <script src="script.js"></script>    
+  </body>
+
+</html>
