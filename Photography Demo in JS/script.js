@@ -5,16 +5,8 @@ var modeIndex = 0;
 var videoPlaying = false;
 
 container = document.querySelector( '#container' );
-controlButton = document.querySelector( '#controlButton' );
-modeButton = document.querySelector( '#modeButton' );
-videoButton = document.querySelector( '#videoButton' );
 
-panorama = new PANOLENS.ImagePanorama( 'molson.jpg' );
-
-infospot = new PANOLENS.Infospot( 350, PANOLENS.DataImage.Info );
-infospot.position.set( 0, -2000, -5000 );
-
-panorama.add( infospot );
+panorama = new PANOLENS.ImagePanorama( 'image0787.png' );
 
 viewer = new PANOLENS.Viewer( { container: container } );
 viewer.add( panorama );
