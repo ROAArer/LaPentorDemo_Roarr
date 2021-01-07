@@ -6,7 +6,7 @@ var videoPlaying = false;
 
 container = document.querySelector( '#container' );
 
-panorama = new PANOLENS.ImagePanorama( 'image0787.png' );
+panorama = new PANOLENS.ImagePanorama( 'https://raw.githubusercontent.com/steven-j-lee/LaPentorDemo_Roarr/main/Photography%20Demo%20in%20JS/molson.jpg' );
 
 viewer = new PANOLENS.Viewer( { container: container } );
 viewer.add( panorama );
