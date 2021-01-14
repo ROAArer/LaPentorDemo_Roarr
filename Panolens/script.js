@@ -11,7 +11,18 @@ panorama = new PANOLENS.ImagePanorama( 'https://raw.githubusercontent.com/steven
 viewer = new PANOLENS.Viewer( { container: container } );
 viewer.add( panorama );
 
-// Method to trigger control
+//add hotspot
+infospot = new PANOLENS.Infospot( 500, PANOLENS.DataImage.Info );
+infospot.position.set( -100, -500, -5000 );
+infospot.addHoverText( "Hello! I'm a hotspot" );
+//have the panorama add the hotspot. All panoramas must be added by viewer
+panorama.add(infospot);
+//do something when you click on the hotspot
+infospot.addEventListener( 'click', function(){
+  fadeIn();
+} );
+
+// arcball movement
 controlButton.addEventListener( 'click', function(){
 
   controlIndex = controlIndex >= 1 ? 0 : controlIndex + 1;
@@ -41,10 +52,3 @@ modeButton.addEventListener( 'click', function(){
 
 } );
 
-// if it's video panorama
-videoButton.addEventListener( 'click', function(){
-  
-  videoPlaying = !videoPlaying;
-  viewer.toggleVideoPlay( videoPlaying ? false : true );
-  
-} );
