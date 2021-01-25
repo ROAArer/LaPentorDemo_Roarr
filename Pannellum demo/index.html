@@ -61,24 +61,28 @@
 <!-- The Modal -->
 <div id="myModal" class="modal">
 
-  <!-- Modal content -->
+  <!-- Modal content this is where we initialize another html file-->
   <div class="modal-content">
     <span class="close">&times;</span>
             <iframe src="hmicrojam/index.html" name="targetframe" allowTransparency="false" 
          scrolling="no" frameborder="5" width="500px" height="500px">
         Here is 
+        <!--what could be possible to do here is add the contents of hmicrojam/index.html in this div 
+        instead of using iframe, since it has a tendency to break design elements-->
         </iframe>
   </div>
 
 </div>
 
-
+<!-- JS script that we use on the html file. Other JS files can also be added-->
 <script>
 pannellum.viewer('panorama', {   
+    //initialize the starting photosphere
     "default": {
         "firstScene": "pano1",
     },
 
+    //add all the possible different photospheres in here
     "scenes": {
         "pano1": {
             "title": "Molson Arena",
@@ -88,7 +92,9 @@ pannellum.viewer('panorama', {
             "compass": true,
             "autoLoad": true,
             "type": "equirectangular",
+            //image of the panorama
             "panorama": "https://i.imgur.com/SBOvcMY.jpg",
+            //the list of hotspots belonging to this specific hotspot
             "hotSpots": [
                 {
                     "pitch": -2.1,
@@ -128,7 +134,7 @@ pannellum.viewer('panorama', {
                 }
             ]
         },
-
+        //add the second panorama
         "pano2": {
             "title": "pano2",
             "hfov": 300,
@@ -178,11 +184,14 @@ var span = document.getElementsByClassName("close")[0];
 
 //functions opens a modal
 function openWindowFunc(hotSpotDiv, args){
+    //it takes the variable modal that we have initialized as "myModal" which is an id we
+    //assign in the html section
     modal.style.display = "block";
 };
 
 //function that checks for the element close in html and closes the modal
 span.onclick = function() {
+    //when we click on the span (which is the class name of the button) and it hides that modal (which is out div)
   modal.style.display = "none";
   modal.close();
 }
@@ -191,13 +200,16 @@ span.onclick = function() {
 function passWord(hotspotDiv, args) {
     var testV = 1;
     var pass1 = prompt('Please Enter Your Password',' ');
+    //the function loops until a user gives the right password
     while (testV < 3) {
         if (!pass1)
             history.go(-1);
         if (pass1.toLowerCase() == "hello") {
+            //if the password is right, open and break the loop
             window.open('passwordsite.html');
          break;
         }
+        //give at least 3 tries -> this can be changed
         testV+=1;
         var pass1 =
         prompt('Access Denied - Password Incorrect, Please Try Again.','Password');
@@ -208,7 +220,6 @@ function passWord(hotspotDiv, args) {
 }
 
 </script>
+
 </body>
 </html>
-
-<!-- create modal -->
