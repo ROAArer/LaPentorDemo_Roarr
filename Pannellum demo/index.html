@@ -8,40 +8,49 @@
 
     <style>
     #panorama {
-        width: 600px;
-        height: 400px;
+        width: 1080px;
+        height: 720px;
+        margin: auto;
+        margin-top: 10%;
     }
-    .custom-hotspot {
-        height: 50px;
-        width: 50px;
-        background: #f00;
+    body{
+        background-color: black;
     }
-    div.custom-tooltip span {
-        visibility: hidden;
-        position: absolute;
-        border-radius: 3px;
-        background-color: #fff;
-        color: #000;
-        text-align: center;
-        max-width: 200px;
-        padding: 5px 10px;
-        margin-left: -220px;
-        cursor: default;
+    .modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
     }
-    div.custom-tooltip:hover span{
-        visibility: visible;
+
+    /* Modal Content/Box */
+    .modal-content {
+    background-color: #fefefe;
+    margin: 15% auto; /* 15% from the top and centered */
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%; /* Could be more or less, depending on screen size */
     }
-    div.custom-tooltip:hover span:after {
-        content: '';
-        position: absolute;
-        width: 0;
-        height: 0;
-        border-width: 10px;
-        border-style: solid;
-        border-color: #fff transparent transparent transparent;
-        bottom: -20px;
-        left: -10px;
-        margin: 0 50%;
+        
+    /* The Close Button */
+    .close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    }
+
+    .close:hover,
+    .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
     }
     </style>
 </head>
@@ -49,47 +58,157 @@
 
 <div id="panorama"></div>
 
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+            <iframe src="hmicrojam/index.html" name="targetframe" allowTransparency="false" 
+         scrolling="no" frameborder="5" width="500px" height="500px">
+        Here is 
+        </iframe>
+  </div>
+
+</div>
+
+
 <script>
-// Create viewer
-viewer = pannellum.viewer('panorama', ﻿{
-    "type": "equirectangular",
-    "panorama": "https://i.imgur.com/SBOvcMY.jpg",
-    "hotSpots": [
-        {
-            "pitch": 14.1,
-            "yaw": 1.5,
-            "cssClass": "custom-hotspot",
-            "createTooltipFunc": hotspot,
-            "createTooltipArgs": "Baltimore Museum of Art"
+pannellum.viewer('panorama', {   
+    "default": {
+        "firstScene": "pano1",
+    },
+
+    "scenes": {
+        "pano1": {
+            "title": "Molson Arena",
+            "hfov": 300,
+            "pitch": -3,
+            "yaw": 17,
+            "compass": true,
+            "autoLoad": true,
+            "type": "equirectangular",
+            "panorama": "https://i.imgur.com/SBOvcMY.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -2.1,
+                    "yaw": 0,
+                    "type": "scene",
+                    "text": "pano2",
+                    "sceneId": "pano2"
+                },
+                        {
+                    "pitch": 14.1,
+                    "yaw": 1.5,
+                    "type": "info",
+                    "URL": "https://google.com",
+                    "text":"hotspot 1"
+                },
+                {
+                    "pitch": 9.4,
+                    "yaw": 22.6,
+                    "type": "info",
+                    "URL": "https://google.com",
+                    "text":"hotspot 2"
+                },
+                {
+                    "pitch": 9.4,
+                    "yaw": 102.6,
+                    "type": "info",
+                    "clickHandlerFunc": openWindowFunc,
+                    "clickHandlerArgs": "hotspot4",
+                    "text":"hotspot 4"
+                },
+                {
+                    "pitch": 0.9,
+                    "yaw": 144.4,
+                    "type": "info",
+                    "clickHandlerFunc": passWord,
+                    "clickHandlerArgs": "hotspot3",
+                }
+            ]
         },
-        {
-            "pitch": -9.4,
-            "yaw": 222.6,
-            "cssClass": "custom-hotspot",
-            "createTooltipFunc": hotspot,
-            "createTooltipArgs": "Art Museum Drive"
-        },
-        {
-            "pitch": -0.9,
-            "yaw": 144.4,
-            "cssClass": "custom-hotspot",
-            "createTooltipFunc": hotspot,
-            "createTooltipArgs": "North Charles Street"
+
+        "pano2": {
+            "title": "pano2",
+            "hfov": 300,
+            "yaw": 5,
+            "compass": true,
+            "type": "equirectangular",
+            "panorama": "https://i.imgur.com/2NPs6Ns.png",
+            "hotSpots": [
+                {
+                    "pitch": -0.6,
+                    "yaw": 37.1,
+                    "type": "scene",
+                    "text": "pano1",
+                    "sceneId": "pano1",
+                    "targetYaw": -23,
+                    "targetPitch": 2
+                },
+                    {
+                "pitch": 14.1,
+                "yaw": 1.5,
+                "type": "info",
+                "URL": "https://google.com",
+                "text":"hotspot 1"
+            },
+            {
+                "pitch": 9.4,
+                "yaw": 22.6,
+                "type": "info",
+                "URL": "https://google.com",
+                "text":"hotspot 2"
+            },
+            {
+                "pitch": 0.9,
+                "yaw": 144.4,
+                "type": "info",
+                "URL": "https://google.com",
+                "text":"hotspot 3"
+            }
+            ]
         }
-    ]
+    }
 });
 
-// Hot spot creation function
-function hotspot(hotSpotDiv, args) {
-    hotSpotDiv.classList.add('custom-tooltip');
-    var span = document.createElement('span');
-    span.innerHTML = args;
-    hotSpotDiv.appendChild(span);
-    span.style.width = span.scrollWidth - 20 + 'px';
-    span.style.marginLeft = -(span.scrollWidth - hotSpotDiv.offsetWidth) / 2 + 'px';
-    span.style.marginTop = -span.scrollHeight - 12 + 'px';
-}
-</script>
+//global vars
+var modal  = document.getElementById("myModal");
+var span = document.getElementsByClassName("close")[0];
 
+//functions opens a modal
+function openWindowFunc(hotSpotDiv, args){
+    modal.style.display = "block";
+};
+
+//function that checks for the element close in html and closes the modal
+span.onclick = function() {
+  modal.style.display = "none";
+  modal.close();
+}
+
+//function that checks for a password, enters a new site once enabled
+function passWord(hotspotDiv, args) {
+    var testV = 1;
+    var pass1 = prompt('Please Enter Your Password',' ');
+    while (testV < 3) {
+        if (!pass1)
+            history.go(-1);
+        if (pass1.toLowerCase() == "hello") {
+            window.open('passwordsite.html');
+         break;
+        }
+        testV+=1;
+        var pass1 =
+        prompt('Access Denied - Password Incorrect, Please Try Again.','Password');
+    }
+        if (pass1.toLowerCase()!="password" & testV ==3)
+        history.go(-1);
+    return " ";
+}
+
+</script>
 </body>
 </html>
+
+<!-- create modal -->
