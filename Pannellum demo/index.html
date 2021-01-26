@@ -86,14 +86,17 @@ pannellum.viewer('panorama', {
     "scenes": {
         "pano1": {
             "title": "Molson Arena",
+            "author": "McGill Library",
             "hfov": 300,
             "pitch": -3,
             "yaw": 17,
             "compass": true,
             "autoLoad": true,
+            "autoRotate": +3, 
             "type": "equirectangular",
             //image of the panorama
-            "panorama": "https://i.imgur.com/SBOvcMY.jpg",
+            "panorama": "https://i.imgur.com/yeymk0L.jpg",
+           
             //the list of hotspots belonging to this specific hotspot
             "hotSpots": [
                 {
@@ -158,6 +161,92 @@ pannellum.viewer('panorama', {
                 "type": "info",
                 "URL": "https://google.com",
                 "text":"hotspot 1"
+            },
+            {
+                "pitch": 9.4,
+                "yaw": 22.6,
+                "type": "info",
+                "URL": "https://google.com",
+                "text":"hotspot 2"
+            },
+            {
+                "pitch": 0.9,
+                "yaw": 144.4,
+                "type": "info",
+                "URL": "https://google.com",
+                "text":"hotspot 3"
+            }
+            ]
+        }
+        "pano3": {
+            "title": "Moyse Hall",
+            "author": "McGill Library",
+            "hfov": 300,
+            "yaw": 5,
+            "compass": true,
+            "autoRotate": -4,
+            "type": "equirectangular",
+            "panorama": "https://i.imgur.com/3o32Twy.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -0.6,
+                    "yaw": 37.1,
+                    "type": "scene",
+                    "text": "To Lower Campus",
+                    "sceneId": "pano4",
+                    "targetYaw": -23,
+                    "targetPitch": 2
+                },
+                    {
+                "pitch": 14.1,
+                "yaw": 1.5,
+                "type": "info",
+                "URL": "https://google.com",
+                "text":"hotspot 1"
+            },
+            {
+                "pitch": 9.4,
+                "yaw": 22.6,
+                "type": "info",
+                "URL": "https://google.com",
+                "text":"hotspot 2"
+            },
+            {
+                "pitch": 0.9,
+                "yaw": 144.4,
+                "type": "info",
+                "URL": "https://google.com",
+                "text":"hotspot 3"
+            }
+            ]
+        }
+        "pano4": {
+            "title": "Lower Campus",
+            "author": "McGill Library",
+            "hfov": 300,
+            "yaw": 5,
+            "compass": true,
+            "autoRotate": -4,
+            "type": "equirectangular",
+            "panorama": "https://i.imgur.com/eHXMmIj.jpg",
+            "hotSpots": [
+                {
+                    "pitch": -0.6,
+                    "yaw": 37.1,
+                    "type": "scene",
+                    "text": "To Molson Stadium",
+                    "sceneId": "pano3",
+                    "targetYaw": -23,
+                    "targetPitch": 2
+                },
+                    {
+                  "pitch": -0.6,
+                    "yaw": 37.1,
+                    "type": "scene",
+                    "text": "To Moyse Hall",
+                    "sceneId": "pano3",
+                    "targetYaw": -23,
+                    "targetPitch": 2
             },
             {
                 "pitch": 9.4,
